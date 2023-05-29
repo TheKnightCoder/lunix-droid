@@ -2,7 +2,7 @@
 
 app_dir="${PREFIX}/var/lib/proot-distro/installed-rootfs/fedora/usr/share/applications/"
 
-echo ""
+echo $app_dir
 
 ls $app_dir
 
