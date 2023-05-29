@@ -1,0 +1,5 @@
+kill $(pgrep -f termux.x11)
+termux-x11 :1 &
+
+/bin/sleep 2
+env DISPLAY=:1 dbus-launch --exit-with-session xfce4-session

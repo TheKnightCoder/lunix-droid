@@ -1,0 +1,22 @@
+#! /bin/bash
+
+app_dir="${PREFIX}/share/applications/"
+
+echo ""
+
+ls $app_dir
+
+echo ""
+
+read -p "Choose the .desktop filename that you want to edit:" filename
+
+if [[ ! "$filename" == *.desktop ]]; then
+    filename="$filename.desktop"
+fi
+
+if [ ! -f ${app_dir}/${filename} ]; then
+    echo "${filename} doesn't exist."
+    exit 1
+fi
+
+nano ${PREFIX}/share/applications/${filename}

@@ -1,0 +1,29 @@
+#! /bin/bash
+
+app_dir="${PREFIX}/var/lib/proot-distro/installed-rootfs/fedora/usr/share/applications/"
+
+echo ""
+
+ls $app_dir
+
+echo ""
+
+read -p "Choose the file you want to run:" filename
+
+if [[ ! "$filename" == *.desktop ]]; then
+    filename="$filename.desktop"
+fi
+
+if [ ! -f ${app_dir}/${filename} ]; then
+    echo "${filename} doesn't exist."
+    exit 1
+fi
+
+read -p "Add any extra parameters e.g. --no-sandbox (optional):" params
+
+command=$(sed -n "0,/Exec=/s/Exec=//p" ${app_dir}/${filename})
+echo "lunix-run ${command} ${params}"
+eval "lunix-run ${command} ${params} &"
+
+
+
