@@ -1,6 +1,6 @@
 #! /bin/bash
-
-app_dir="${PREFIX}/var/lib/proot-distro/installed-rootfs/fedora/usr/share/applications/"
+distro=debian
+app_dir="${PREFIX}/var/lib/proot-distro/installed-rootfs/${distro}/usr/share/applications/"
 
 echo ""
 

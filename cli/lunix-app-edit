@@ -2,7 +2,7 @@
 
 app_dir="${PREFIX}/share/applications/"
 
-echo ""
+echo "$app_dir"
 
 ls $app_dir
 

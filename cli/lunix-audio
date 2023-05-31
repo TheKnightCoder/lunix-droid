@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Define the variable
+status=$1
+
+# Check the value of the variable
+if [ "$status" = "on" ]; then
+    pulseaudio --start \
+    --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" \
+    --exit-idle-time=-1
+    echo "audio started"
+elif [ "$status" = "off" ]; then
+    pulseaudio --kill
+    echo "audio off"
+else
+    echo "input 'on' or 'off'"
+fi

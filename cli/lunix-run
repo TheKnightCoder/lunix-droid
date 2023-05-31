@@ -1,5 +1,5 @@
 #!/bin/bash
-
+distro=debian
 if [[ $1 == "--user" ]]; then
 	user=$2
 	shift 2
@@ -8,11 +8,15 @@ else
 fi
 
 if [[ -z "$@" ]]; then
-    proot-distro login fedora --shared-tmp \
-    --bind ${PREFIX%/*}/home:/home/${user} \
+    proot-distro login $distro --shared-tmp \
+    --bind ${HOME}/Desktop:/home/${user}/Desktop \
+    --bind ${HOME}/Documents:/home/${user}/Documents \
+    --bind ${HOME}/Downloads:/home/${user}/Downloads \
     --user $user
 else
-    proot-distro login fedora --shared-tmp \
-    --bind ${PREFIX%/*}/home:/home/${user} \
+    proot-distro login $distro --shared-tmp \
+    --bind ${HOME}/Desktop:/home/${user}/Desktop \
+    --bind ${HOME}/Documents:/home/${user}/Documents \
+    --bind ${HOME}/Downloads:/home/${user}/Downloads \
     --user $user -- env DISPLAY=:1 $@
 fi
